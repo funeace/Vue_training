@@ -1,0 +1,240 @@
+<!-- テンプレート構文 -->
+<!--  <!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <h1>Vue.js</h1>
+    <div id="app">
+        <!-- p の中にh2が追加される -->
+<!--         <p v-html="messages"></p>
+    </div>
+
+
+    <script>
+    var data = {
+        messages: '<h2 style="color:red;">vue.js sample message.</h2>'
+    };
+
+
+    var app = new Vue({
+        el: '#app',
+        data: data
+    });
+    </script>
+</body>
+ -->
+
+<!-- ボタンをクリックするとinputに入力した内容でリストが追加される -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <h1>Vue.js</h1>
+  <div id="app">
+    <ol v-html="messages"></ol>
+  </div>
+  <hr>
+  <input type="text" onInput="doInput(event);">
+  <button onclick="doAction();">
+    click
+  </button>
+  <script>
+    var data = {
+      messages: '<li>Hello Vue!</li>'
+    };
+
+    var app = new Vue({
+      el: '#app',
+      data: data
+    });
+
+    function doInput(event) {
+      data.message = event.target.value;
+    }
+
+    function doAction() {
+      data.messages += '<li>' + data.message + '</li>'
+    }
+  </script>
+</body> -->
+
+<!-- テキストフィールドの数値に対応して文字サイズを変える -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <h1>Vue.js</h1>
+  <div id="app">
+    <p v-bind:style="style">{{ message }}</p>
+  </div>
+  <hr>
+  <input type="number" onChange="doChange(event);" value="20">
+  <script>
+    var data = {
+      message: "Hello Vue!",
+      style: "font-size: 20pt; color:red;"
+    };
+
+    var app = new Vue({
+      el: '#app',
+      data: data
+    });
+
+    function doChange() {
+      data.style = "font-size:" + event.target.value + "pt; color: red";
+    }
+  </script>
+</body> -->
+
+
+<!-- オブジェクト構文について -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <style>
+    .red {
+      font-size: 20pt;
+      font-weight: bold;
+      font-style: normal;
+      color:red;
+    }
+    .blue {
+      font-size: 24pt;
+      font-weight: plain;
+      font-style: italic;
+      color: blue;
+    }
+  </style>
+  <h1>Vue.js</h1>
+  <div id="app">
+    <p v-bind:class="classes">{{ message }}</p>
+  </div>
+  <hr>
+  <button onclick="doAction();">click</button>
+
+  <script>
+    var classObj = {
+      red: true,
+      blue: false
+    };
+
+    var data = {
+      message: "Hello Vue",
+      classes: classObj
+    };
+
+    var app = new Vue({
+      el: "#app",
+      data: data
+    });
+
+    function doAction(){
+      classObj.isRed = !classObj.isRed;
+      classObj.isBlue = !classObj.isBlue;
+    }
+  </script>
+</body>
+</html> -->
+
+<!-- styleをbindして表示 -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <h1>Vue.js</h1>
+  <div id="app">
+    <p v-bind:style="styles">{{ message }}</p>
+  </div>
+
+  <script>
+    var data = {
+        message: 'Hello Vue!',
+        styles: {
+            margin:'10px',
+            padding:'5px 20px',
+            fontSize:'20pt', 
+            color:'red',
+            backgroundColor:'#fee',
+            border:'3px solid blue'
+        }
+    };
+
+    var app = new Vue({
+        el: '#app',
+        data: data
+    });
+
+  </script>
+</body>
+</html> -->
+
+
+<!-- v-if -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <style>
+    .ok {
+        font-size:24pt;
+        color:blue;
+        padding: 5px 10px;
+        border: 2px solid red;
+    }
+    .ng {
+        font-size:20pt;
+        color:gray;
+    }
+    </style>
+    <h1>Vue.js</h1>
+    <div id="app">
+        <p v-if="flag" class="ok">
+            これは正常な表示です。
+        </p>
+        <p v-else class="ng">
+            ※現在、問題が発生中です……
+        </p>
+    </div>
+    <button onclick="doAction();">
+        Click
+    </button>
+
+    <script>
+    var data = {
+        flag:true
+    }
+
+    var app = new Vue({
+        el: '#app',
+        data:data
+    });
+
+    function doAction() {
+      // toggleclassがない。functionを用意して 反転させる処理を作る
+        data.flag = !data.flag;
+    }
+    </script>
+</body>
+</html>
+ -->
+
+ 
