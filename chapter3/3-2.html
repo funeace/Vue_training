@@ -1,0 +1,257 @@
+<!-- v-bindをコンポーネントで指定、Taro,Hanakoとかはdataのオブジェクトであるため、
+item変数で呼び出せる -->
+
+ <!-- <html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+  <style>
+    .hello{
+      font-size: 20pt;
+      font-weight: bold;
+      border: 1px solid magenta;
+      padding: 5px 10px 0px 10px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Vue.js</h1>
+  <div id="app">
+    <hello v-for="item in data" v-bind:name="item" />
+  </div>
+  <script>
+    var hello = Vue.component('hello',
+      {
+        props:['name'],
+        template: '<p class="hello">Hello, {{ name }}!</p>'
+        })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        data: ['Taro', 'Hanako', 'Sachiko', 'Jiro']
+      }
+    })
+  </script>
+</body>
+</html>
+ -->
+
+<!-- v-model -->
+<!-- <html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+  <style>
+    .hello{
+      font-size: 20pt;
+      font-weight: bold;
+      border: 1px solid magenta;
+      padding: 5px 10px 0px 10px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Vue.js</h1>
+  <div id="app">
+    <div><hello v-bind:name="name" /></div>
+    <div><input type="text" v-model="name"></div>
+  </div>
+
+  <script>
+    var hello = Vue.component('hello',
+      {
+        props:['name'],
+        template: '<p class="hello">Hello, {{ name }}!</p>'
+        })
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        name: "no-name"
+      }
+    })
+  </script>
+</body>
+</html>
+ -->
+
+<!-- v-on:clickでオブジェクトやコンポーネントオブジェクトで用意された変数を使えるようにする -->
+<!-- <html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+  <style>
+    .hello{
+      font-size: 20pt;
+      font-weight: bold;
+      border: 1px solid magenta;
+      padding: 5px 10px 0px 10px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+    <h1>Vue.js</h1>
+    <div id="app">
+        <hello/>
+    </div>
+
+  <script>
+    var hello = Vue.component('hello', 
+    {
+        data:function() {
+            return { 
+                counter:0 
+            };
+        },
+        template: '<p v-on:click="counter++;"class="hello">clicked: {{counter}}.</p>',
+    })
+
+    var app = new Vue({
+        el: '#app',
+    });
+  </script>
+</body>
+</html>
+
+<!-- クリックするとクラスを変更する処理 -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+  <style>
+    .red{
+      color:white;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Vue.js</h1>
+  <div id="app">
+    <hello />
+  </div>
+
+  <script>
+    var hello = Vue.component('hello',
+    {
+      data:function(){
+        return {
+          counter: 0,
+          isRed:false
+        };
+      },
+      methods:{
+        doAction:function(event) {
+          this.counter++;
+          if (this.countr > 10){
+            this.counter = 0;
+          }
+          if (this.counter % 2 == 0){
+            this.isRed = false;
+          } else {
+            this.isRed = true;
+          }
+        },
+      },
+      template: '<p v-bind:class="{red:isRed}" v-on:click="doAction"class="hello">clicked: {{counter}}.</p>'
+    })
+    var app = new Vue({
+      el: '#app'
+    });
+  </script>
+</body>
+ -->
+
+<!-- 算術プロパティ -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+  <style>
+    .red{
+      color:white;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Vue.js</h1>
+  <div id="app">
+    <hello />
+  </div>
+
+  <script>
+    Vue.component('hello', {
+      data: function(){
+        return {
+          num:0
+        };
+      },
+      computed:{
+        calc: function(event){
+          var total = 0;
+          for (var i = 1; i <= this.num; i++){
+            total += i;
+          }
+          return "total: " + total; 
+        }
+      },
+      template: '<div><p class="hello">{{ calc }}</p><div><input type="number" v-model="num"></div><div>'
+    });
+
+    var app = new Vue({
+      el: '#app'
+    });
+  </script>
+</body>
+ -->
+
+
+ <!-- ローカルコンポーネント -->
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
+  <style>
+    .red{
+      color:white;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Vue.js</h1>
+  <div id="app">
+    <div><hello /></div>
+    <div><hello /></div>
+    <div><hello /></div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: "#app",
+      components:{
+        hello:{
+          data:function() {
+            return {
+              counter: 0,
+            };
+          },
+          template: '<p v-on:click="counter++;" class="hello">clicked: {{counter}}.</p>'
+        }
+      }
+    })
+  </script>
+</body>
