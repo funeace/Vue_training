@@ -1,47 +1,39 @@
 <template>
   <div class="hello">
     <h1>{{ title }}</h1>
-    <p>{{ message }}</p>
+    <pre>{{ message }}</pre>
     <hr>
-    <div>Value: <input type="number" v-model="val"></div>
-    <div style="height:10px;"></div>
-    <table>
-      <tr><th>add:</th><td>{{add}}</td></tr>
-      <tr><th>sub:</th><td>{{sub}}</td></tr>
-      <tr><th>multiple:</th><td>{{mult}}</td></tr>
-      <tr><th>divide:</th><td>{{div}}</td></tr>
-    </table>
+    <div class="area"
+      v-on:click.left.prevent="left"
+      v-on:click.middle.prevent="middle"
+      v-on:click.right.prevent="right">
+        click here!
+      </div>
   </div>
 </template>
+
 
 <script>
 export default {
   name: 'HelloWorld',
   props: {
-    title: String
+    title: String, 
   },
-  data:function(){
+  data: function(){
     return {
-      message: '値の監視',
-      val: 0,
-      add: 0,
-      sub: 0,
-      mult: 0,
-      div: 0
-    }
+      message: '',
+    };
   },
-  watch:{
-    val: function(value){
-      this.val = value
-      var val = parseInt(value)
-      this.add = Math.floor(val + 2)
-      this.sub = Math.floor(val - 2)
-      this.mult = Math.floor(val * 2)
-      this.div = Math.floor(val / 2)
-    }
-  },
-  created: function(){
-    this.val = 5
+  methods: {
+    left: function(){
+      this.message = '[left button]';
+    },
+    right: function(){
+      this.message = '[right button]'
+    },
+    middle: function(){
+      this.message = '[middle button]';
+    },
   },
 }
 </script>
@@ -61,8 +53,39 @@ h1 {
   margin:0px;
 }
 p {
-    margin:0px;
-    color:#666;
-    font-size:16pt;
+  margin:0px;
+  color:#666;
+  font-size:16pt;
   }
+pre {
+  font-size:14pt;
+  line-height: 1.25;
+}
+div.out {
+  padding: 5px 0px;
+  background-color: #eee;
+  width:300px;
+  height:200px;
+}
+div.mid {
+  padding: 5px 0px;
+  background-color: #ddd;
+  width:200px;
+  height:175px;
+}
+div.in {
+  padding: 5px 0px;
+  background-color: #ccc;
+  width:100px;
+  height:150px;
+}
+.area {
+  width:300px;
+  height:100px;
+  background-color: #ddd;
+  padding:10px;
+  font-size:20pt;
+}
+
+
 </style>
