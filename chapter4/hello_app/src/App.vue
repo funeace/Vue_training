@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <HelloWorld v-bind:title="message" v-bind:num="num" />
+    <HelloWorld title="JSX?">
+    </HelloWorld>
   </div>
 </template>
 
@@ -14,8 +15,11 @@ export default {
   },
   data: function(){
     return{
-      message: "Validdate",
-      num: "abc"
+      slotbjs: [
+        {name: "Taro", mail: "taro@yamada"},
+        {name: "Hanako", mail: "hanako@yamada"},
+        {name: "Sachiko", mail: "sachiko@yamada"}
+      ]
     };
   }
 }
