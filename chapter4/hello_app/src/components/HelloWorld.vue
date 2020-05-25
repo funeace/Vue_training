@@ -1,25 +1,67 @@
+<template>
+  <div class="hello">
+    <h1>{{title}}</h1>
+    <p>{{message}}</p>
+    <hr/>
+    <button v-on:click="doAction">
+    Show/Hide
+    </button>
+    <br><br>
+    <transition name="transit">
+      <p v-if="flg" class="trans">Transition!</p>
+    </transition>
+  </div>
+</template>
+
 <script>
-export default {
-  name: 'HelloWorld',
-  data: function() {
-    return {
-      title:'JSX',
-      message:'これは、dataに用意したメッセージです。',
-    };
-  },
-  render: function(h){
-    return (
-      <div>
-        <h1>{this.title}</h1>
-        <p>{this.message}</p>
-      </div>
-    );
+  export default{
+    name: "HelloWorld",
+    props: {
+      title:String
+    },
+    data: function(){
+      return {
+        message: 'Transition Sample',
+        flg:true,
+        btn: "Hide"
+      }
+    },
+    methods:{
+      doAction: function(){
+        this.flg = !this.flg
+      },
+    },
   }
-}
 </script>
 
 
 <style>
+.trans {
+  width: 150px;
+  background-color: #ddf;
+  padding:10px;
+  font-size:20pt;
+}
+
+.transit-enter-active {
+  transition: 1.0s;
+}
+.transit-leave-active {
+  transition: 1.0s;
+}
+
+.transit-enter, .transit-leave-to {
+ transform: translateX(200px) translateY(-200px);
+ opacity: 0.1;
+}
+
+.transit-enter-to {
+  opacity: 1.0;
+}
+.transit-leave {
+  opacity: 1.0;
+}
+
 .inner {
   color: red;
   font-size: 14pt;
