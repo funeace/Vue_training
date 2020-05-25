@@ -1,30 +1,27 @@
 <template>
   <section class="container">
-    <h1>{{ title }}</h1>
-    <p>{{ message }}</p>
+    <h1>{{title}}</h1>
+    <p>{{$store.state.message}}</p>
     <hr>
-    <router-link to="/other">Go to Other</router-link>
+    <div class="link"
+        @click="$store.commit('doit')">
+      <a @click.stop="$store.commit('reset')">
+        clicked: {{ $store.state.counter }}
+      </a>
+    </div>
   </section>
 </template>
 
+
 <script>
-  export default {
-    data: function(){
-      return{
-        title: "Hello",
-        message: "This is message",
-        now: "wait..."
-      }
-    },
-    // 初期値
-    created: function(){
-      // setIntervalは、一定時間ごとにnew Dataしたデータを書き換えている
-      setInterval(() =>{
-        var d = new Date()
-        this.now = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()
-      },1000)
-    },
-  }
+export default {
+  data: function(){
+    return {
+      title:'Hello',
+      message: 'this is message.'
+    }
+  },
+}
 </script>
 <style>
   .container {
