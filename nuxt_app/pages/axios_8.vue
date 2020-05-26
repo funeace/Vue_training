@@ -20,12 +20,7 @@ export default {
   },
   created:function(){
     var config = { // ●各自の設定を記述
-        apiKey: "AIzaSyBWNAxH6UpF4aWjG1ncWQMnBAJiw7814Pg",
-        authDomain: "funeace-sample-vue.firebaseapp.com",
-        databaseURL: "https://funeace-sample-vue.firebaseio.com",
-        projectId: "funeace-sample-vue",
-        storageBucket: "funeace-sample-vue.appspot.com",
-        messagingSenderId: "788069287979"
+      // 隠しておく
     };
     firebase.initializeApp(config);
 
